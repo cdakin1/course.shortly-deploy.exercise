@@ -1,9 +1,9 @@
-
 module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+
       options: {
         separator: ';'
       },
@@ -11,6 +11,7 @@ module.exports = function(grunt) {
         src: ['public/client/**/*.js'],
         dest: 'public/dist/build.js'
       }
+
     },
 
     mochaTest: {
@@ -86,10 +87,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
 
 
-  // 'reg test for build';
-  // 'test';
-  // 'upload';
-  // 'deploy';
   grunt.registerTask('server-dev', function (target) {
     grunt.task.run([ 'nodemon', 'watch' ]);
   });
