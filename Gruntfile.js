@@ -2,6 +2,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      options: {
+        separator: ';'
+      },
       dist: {
         src: ['public/client/**/*.js'],
         dest: 'public/dist.js'
@@ -11,7 +14,7 @@ module.exports = function(grunt) {
           options: {
             reporter: 'spec'
           },
-          sr: ['test/**/*.js']
+          src: ['test/**/*.js']
         }
       },
       nodemon: {
@@ -22,7 +25,7 @@ module.exports = function(grunt) {
       uglify: {
         my_target: {
           files: {
-            'public/client/**/*.js': 'public/dist.js'
+            'public/dist/build.min.js': 'public/client/**/*.js'
           }
         }
       },
@@ -37,7 +40,7 @@ module.exports = function(grunt) {
         scripts: {
           files: [
             'public/client/**/*.js',
-            'public/lib/**/*.js',
+            'public/lib/**/*.js'
           ],
           tasks: [
             'concat',
@@ -56,7 +59,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-nodemon');
 
-  grunt.registerTask('default', ['nodemon']);
+  grunt.registerTask('default', ["nodemon"]);
 
 };
 
