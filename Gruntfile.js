@@ -7,7 +7,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: ['public/client/**/*.js'],
-        dest: 'public/dist.js'
+        dest: 'public/dist/build.js'
       },
       mochaTest: {
         test: {
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       uglify: {
         my_target: {
           files: {
-            'public/dist/build.min.js': 'public/client/**/*.js'
+            'public/dist/build.min.js': ['public/client/*.js']
           }
         }
       },
@@ -36,6 +36,14 @@ module.exports = function(grunt) {
       },
       cssmin: {
       },
+      shell: {
+        options: {
+            stderr: false
+        },
+        target: {
+            command: 'ls'
+        }
+    },
       watch: {
         scripts: {
           files: [
@@ -59,7 +67,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-nodemon');
 
-  grunt.registerTask('default', ["nodemon"]);
+  grunt.registerTask('tester', [
+    'eslint',
+    'mochaTest'
+  ]);
+
 
 };
 
