@@ -1,16 +1,16 @@
- 
+
 module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
-        options: {
-                separator: ';'
-                },
-        dist: {
-                src: ['public/client/**/*.js'],
-                dest: 'public/dist/build.js'
-                }
+      options: {
+        separator: ';'
+      },
+      dist: {
+        src: ['public/client/**/*.js'],
+        dest: 'public/dist/build.js'
+      }
     },
 
     mochaTest: {
@@ -27,21 +27,30 @@ module.exports = function(grunt) {
         script: 'server.js'
       }
     },
-uglify: {
-        target: {
-                files: {
-                        'public/dist/build.min.js': ['public/client/**/*.js']
-                        }
-                }
+    uglify: {
+      target: {
+        files: {
+          'public/dist/build.min.js': ['public/client/**/*.js']
+        }
+      }
     },
 
     eslint: {
       target: [
-        'public/client/**/*.js'
+        'public/**/*.js',
+        'app/**/*.js',
+        'lib/**/*.js',
+        'test/**/*.js',
+        './*.js'
       ]
     },
 
     cssmin: {
+      dist: {
+        files: {
+          'public/dist/build': 'public/style.css'
+        }
+      }
     },
 
     watch: {
@@ -55,7 +64,7 @@ uglify: {
           'uglify'
         ]
       },
-	       css: {
+      css: {
         files: 'public/*.css',
         tasks: ['cssmin']
       }
@@ -76,7 +85,24 @@ uglify: {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-nodemon');
 
+
+  // 'reg test for build';
+  // 'test';
+  // 'upload';
+  // 'deploy';
   grunt.registerTask('server-dev', function (target) {
     grunt.task.run([ 'nodemon', 'watch' ]);
+  });
+  grunt.registerTask('test', function (target) {
+    grunt.task.run([ 'mochaTest' ]);
+  });
+  grunt.registerTask('deploy', function (target) {
+    grunt.task.run([ '', 'watch' ]);
+  });
+  grunt.registerTask('upload', function (target) {
+    grunt.task.run([ '' ]);
+  });
+  grunt.registerTask('build', function (target) {
+    grunt.task.run([ '' ]);
   });
 };
