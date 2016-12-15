@@ -42,11 +42,14 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
+<<<<<<< HEAD
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-cssmin": "^1.0.2",
     "grunt-contrib-uglify": "^1.0.2",
     "grunt-eslint": "^18.1.0",
     "grunt-mocha-test": "^0.12.7",
+=======
+>>>>>>> a0d0558d61472105222b5c6d28e5312f95517956
     "grunt-nodemon": "^0.4.2",
     "supertest": "^1.2.0"
   }
