@@ -89,7 +89,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('server-dev', function (target) {
     grunt.task.run([ 'nodemon', 'watch' ]);
-  });
+    });
   grunt.registerTask('test', function (target) {
     grunt.task.run([ 'mochaTest' ]);
   });
